@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    ViewData["Title"] = "Movie Form"; <!-- View of Movie form -->
+}
+
+@model Mission4.Models.FormResponse
+
+<div style="align-content:baseline">
+    <form method="post">
+        <!-- Form -->
+        <label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId">
+            <option>Select a Category</option>
+            @foreach (MovieCategory mc in ViewBag.Categories)        // for each major in the viewbag associated with the table/model 'Majors'
+            {
+                <option value="@mc.CategoryId">@mc.CategoryName</option>
+// show the CategoryName, but....store the value as the MajorID
+            }
+        </select>
+        <br />
+
+        <label asp-for="Title">Title:</label>
+        <input asp-for="Title" />
+        <br />
+
+        <label asp-for="Year">Year:</label>
+        <input asp-for="Year" />
+        <br />
+
+        <label asp-for="Director">Director:</label>
+        <input asp-for="Director" />
+        <br />
+
+        <label asp-for="Rating">Rating:</label>
+        <select asp-for="Rating">
+            <option>G</option>
+            <option>PG</option>
+            <option>PG-13</option>
+            <option>R</option>
+        </select>
+        <br />
+
+        <label asp-for="Edited">Edited:</label> <!-- optional -->
+        <select asp-for="Edited">
+            <option value="True">Yes</option>
+            <option value="Falst">No</option>
+        </select>
+        <br />
+
+        <label asp-for="Lent">Lent to:</label> <!-- optional -->
+        <input asp-for="Lent" />
+        <br />
+
+        <label asp-for="Notes">Notes</label> <!-- optional, limit to 25 characters-->
+        <input asp-for="Notes" />
+        <br />
+
+        <div asp-validation-summary="All"></div>
+
+        <button type="submit"> Submit </button>
+    </form>
+</div>
